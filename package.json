@@ -1,0 +1,33 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "cp .env.local .env && NODE_ENV=development nuxt dev",
+    "dev:stg": "cp .env.staging .env && NODE_ENV=staging nuxt dev",
+    "dev:prod": "cp .env.production .env && NODE_ENV=production nuxt dev",
+    "generate": "cp .env.local .env && NODE_ENV=development nuxt generate",
+    "generate:stg": "cp .env.staging .env && NODE_ENV=staging nuxt generate",
+    "generate:prod": "cp .env.production .env && NODE_ENV=production nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^0.7.1",
+    "@nuxt/icon": "^1.8.2",
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@pinia/nuxt": "^0.7.0",
+    "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.5",
+    "humps": "^2.0.1",
+    "nuxt": "^3.14.1592",
+    "nuxt-gtag": "^3.0.2",
+    "pinia": "^2.2.6",
+    "vue": "latest",
+    "vue-router": "latest"
+  }
+}
