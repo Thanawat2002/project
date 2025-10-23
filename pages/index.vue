@@ -19,8 +19,8 @@ export default {
         value: 'instagram',
       },
       {
-        name: 'Twitter',
-        value: 'twitter',
+        name: 'Tiktok',
+        value: 'tiktok',
       }
     ],
     agreeMsg: [
