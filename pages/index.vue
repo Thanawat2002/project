@@ -37,6 +37,7 @@ export default {
       },
       { name: 'คุณอนุญาติให้บริษัทนำข้อมูลไปใช้เพื่อทำการตลาดได้', value: 'marketing' },
     ],
+    isSubmitted: false,
   }),
   methods: {
     async handleSubmit() {
@@ -48,16 +49,14 @@ export default {
         selectedSocialMedia: this.selectedSocialMedia,
         agreeTerms: this.agreeTerms,
       }
-
+      this.isSubmitted = true
       try {
         const response = await fetch(`${runtimeConfig.public.apiUrl}`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
           body: JSON.stringify(payload)
         })
         console.log(response)
+        
       } catch (error) {
         const snackbarStore = useSnackbarStore()
         snackbarStore.setSnackbar({
@@ -84,7 +83,11 @@ export default {
       </div>
 
       <!-- Form Section -->
-      <form @submit.prevent="handleSubmit" class="px-8 py-6 space-y-6">
+      <form 
+        v-if="!isSubmitted"
+        @submit.prevent="handleSubmit" 
+        class="px-8 py-6 space-y-6"
+      >
         <!-- Profile Input -->
         <div class="space-y-2">
           <label class="block text-sm font-semibold text-gray-700">
@@ -194,6 +197,11 @@ export default {
           </button>
         </div>
       </form>
+
+      <div v-else class="flex flex-col items-center justify-center text-center h-screen">
+        <h2 class="text-3xl font-bold text-gray-600">คุณได้ส่งข้อมูลแล้ว</h2>
+        <p class="text-gray-600 mt-2">ขอบคุณที่ร่วมลงทะเบียน!</p>
+      </div>
     </div>
   </div>
 </template>
